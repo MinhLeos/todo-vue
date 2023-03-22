@@ -16,11 +16,12 @@
 
 <script setup>
     import { defineAsyncComponent } from 'vue'
-    import { TODOS_LIST, deleteOneTodo } from '../ultis/store.js'
+    import { store } from '../ultis/store.js'
     import Loading from '../components/UI/Loading.vue'
     import Error from '../components/UI/Error.vue'
     // import TodoItem from '../components/Todo/TodoItem.vue'
 
+    const { TODOS_LIST, deleteOneTodo } = store()
     const TodoItem = defineAsyncComponent({
         // the loader function
         loader: () => import('../components/Todo/TodoItem.vue'),

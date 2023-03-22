@@ -19,16 +19,16 @@
         </template>
     </Dialog>
     <Wrapper>
-        <div class="todo-item-title">
-            <h3>{{ props.name }}</h3>
+        <div class="todo-item-title flex items-center justify-center mb-4">
+            <h3 class="text-[#50d71e]">{{ props.name }}</h3>
             <p :class="status.class" @click="handleChangeStatus">{{ status.title }}</p>
         </div>
-        <div class="todo-item-des">
+        <div class="w-[70%] my-0 mx-auto text-start">
             <p v-for="des in listDes" :key="des">{{ des }}</p>
         </div>
-        <p class="date-create"><i>{{ new Date(props.createdAt).toISOString() }}</i></p>
+        <p class="mt-4"><i>{{ new Date(props.createdAt).toISOString() }}</i></p>
         <p><i>Id: {{ props.id }}</i></p>
-        <div class="todo-item-btn">
+        <div class="mt-8">
             <Button title="Edit" action="edit" @click="editClick"></Button>
             <Button title="Delete" action="delete" :disable="props.length === 1" @click="deleteClick"></Button>
         </div>
@@ -38,7 +38,7 @@
 <script setup>
     import { useRouter } from 'vue-router'
     import { ref, computed } from 'vue'
-    import { changeStatus } from '../../ultis/store.js'
+    import { store } from '../../ultis/store.js'
     import Wrapper from '../UI/Wrapper.vue'
     import Button from '../UI/Button.vue'
     import Dialog from '../UI/Dialog.vue'
@@ -47,7 +47,7 @@
     const emit = defineEmits(['delete'])
     const todoIsDone = ref(false)
     const isDelete = ref(false)
-
+    const { changeStatus } = store()
     const listDes = computed(() => {
         const list = props.description.split('\n')
         return list

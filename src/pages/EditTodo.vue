@@ -28,11 +28,12 @@
 <script setup>
     import { ref, computed, toRefs } from 'vue'
     import { useRouter } from 'vue-router'
-    import { TODOS_LIST, editTodo } from '../ultis/store';
+    import { store } from '../ultis/store';
     import Wrapper from '../components/UI/Wrapper.vue'
     import Button from '../components/UI/Button.vue'
     import Dialog from '../components/UI/Dialog.vue'
 
+    const { TODOS_LIST, editTodo } = store()
     const props = defineProps(['id'])
     const router = useRouter()
 

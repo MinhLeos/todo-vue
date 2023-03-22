@@ -28,7 +28,7 @@
 <script setup>
     import { onUnmounted, onMounted, ref } from 'vue'
     import { useRouter } from 'vue-router'
-    import { addTodo } from '../ultis/store';
+    import { store } from '../ultis/store';
     import Wrapper from '../components/UI/Wrapper.vue'
     import Button from '../components/UI/Button.vue'
     import Dialog from '../components/UI/Dialog.vue'
@@ -38,7 +38,8 @@
     const todoDescription = ref('')
     const inputIsInvalid = ref(false)
     const classAdd = ref('')
-
+    const { addTodo } = store()
+    
     function handleSubmitEdit() {
         if (todoName.value.trim() === '' || todoDescription.value.trim() === '') {
             inputIsInvalid.value = true

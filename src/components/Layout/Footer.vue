@@ -1,15 +1,22 @@
 <template>
     <div class="footer">
-        <p class="footer-all">Total: {{ todoLength.length }}</p>
-        <p class="footer-done">Done: {{ todoLength.doneLength }}</p>
+        <p class="footer-all">Total: {{ todos.length }}</p>
+        <!-- <p class="footer-all">Total: {{ todoLength.length }}</p> -->
+        <p class="footer-done">Done: {{ todos.doneLength }}</p>
     </div>
 </template>
 
-<script setup>
-    import { inject } from 'vue'
-    const todoLength = inject('todoLength')
+<script>
+    import { store } from '../../ultis/store';
+    export default {
+        computed: {
+            todos(){
+                const { TODOS_LIST } = store()
+                return this.$todoLength(TODOS_LIST)
+            }
+        }
+    }
 </script>
-
 <style lang="scss" scoped>
 @import '../../scss/footer.scss'
 </style>
