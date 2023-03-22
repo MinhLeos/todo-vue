@@ -1,0 +1,19 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    &-all {
+        margin-right: 2rem;
+        color: rgb(24, 201, 201);
+    }
+
+    &-done {
+        color: rgb(18, 206, 112);
+    }
+}

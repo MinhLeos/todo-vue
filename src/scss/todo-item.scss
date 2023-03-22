@@ -1,0 +1,45 @@
+.todo-item {
+    &-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+
+        p {
+            width: 5rem;
+            margin-left: 1rem;
+            border: 1px solid transparent;
+            background-color: aqua;
+            border-radius: 1111px;
+            text-align: center;
+            cursor: pointer;
+            word-wrap: break-word;
+
+            &.done {
+                background-color: rgb(24, 156, 75);
+            }
+
+            &.active {
+                background-color: rgb(196, 199, 16);
+            }
+
+            &:active {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    &-des {
+        width: 70%;
+        margin: 0 auto;
+        text-align: start;
+    }
+
+    &-btn {
+        margin-top: 2rem;
+    }
+}
+
+p.date-create {
+    margin-top: 1rem;
+}

@@ -1,0 +1,74 @@
+<template>
+    <Dialog v-if="inputIsInvalid" @close="confirmError" title="Invalid Input">
+        <template #default>
+            <p>Unfortunately, at least one input value is invalid.</p>
+            <p>Please check all inputs and make sure you enter at least a few characters into each input field.</p>
+        </template>
+        <template #actions>
+            <Button @click="confirmError">Okay</Button>
+        </template>
+    </Dialog>
+    <h2 class="edit-todo-header" :class="classAdd">Add Todo</h2>
+    <Wrapper>
+        <form class="edit-todo-form">
+
+            <div class="edit-todo-form-div">
+                <label for="name">Name</label>
+                <input id="name" name="name" v-model="todoName"/>
+            </div>
+            <div class="edit-todo-form-div">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" v-model="todoDescription"></textarea>
+            </div>
+        </form>
+        <Button @click="handleSubmitEdit" title="Save"></Button>
+    </Wrapper>
+</template>
+
+<script setup>
+    import { onUnmounted, onMounted, ref } from 'vue'
+    import { useRouter } from 'vue-router'
+    import { addTodo } from '../ultis/store';
+    import Wrapper from '../components/UI/Wrapper.vue'
+    import Button from '../components/UI/Button.vue'
+    import Dialog from '../components/UI/Dialog.vue'
+
+    const router = useRouter()
+    const todoName = ref('')
+    const todoDescription = ref('')
+    const inputIsInvalid = ref(false)
+    const classAdd = ref('')
+
+    function handleSubmitEdit() {
+        if (todoName.value.trim() === '' || todoDescription.value.trim() === '') {
+            inputIsInvalid.value = true
+            return
+        }
+        addTodo(todoName.value, todoDescription.value)
+        router.push('/')
+    }
+    function confirmError() {
+        inputIsInvalid.value = false
+    }
+
+    // demo use lifecycle hooks : onMounted và onUnmounted
+    let timer
+    onMounted(() => {
+        timer = setInterval(() => {
+            if (classAdd.value) {
+                classAdd.value = ''
+            } else {
+                classAdd.value = 'change-color'
+            }
+        }, 1000)
+    })
+    onUnmounted(() => {
+        if (timer) {
+            clearInterval(timer)
+        }
+    })
+</script>
+
+<style lang="scss" scoped>
+@import '../scss/edit-todo.scss'
+</style>

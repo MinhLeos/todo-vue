@@ -1,0 +1,50 @@
+.edit-todo {
+
+    &-header {
+        text-align: center;
+        color: rgb(135, 151, 165);
+        margin-bottom: 3rem;
+    }
+
+    &-header.change-color {
+        color: aqua;
+    }
+
+    &-form {
+        height: 30vh;
+        margin-bottom: 2rem;
+        
+        &-div {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+
+            input,
+            textarea {
+                display: block;
+                width: 100%;
+                font: inherit;
+                padding: 0.15rem 0.5rem;
+                border: 1px solid #ccc;
+            }
+
+            textarea {
+                height: 10rem;
+            }
+
+            input:focus,
+            textarea:focus {
+              outline: none;
+              border-color: #3a0061;
+              background-color: #f7ebff;
+            }
+
+            label {
+                font-weight: bold;
+                display: block;
+                margin-bottom: 0.5rem;
+                text-align: start;
+            }
+        }
+    }
+}

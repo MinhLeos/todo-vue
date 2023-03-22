@@ -1,0 +1,36 @@
+.header {
+    margin: 0;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(81, 158, 194);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+
+    &.scroll {
+        background-color: rgb(75, 63, 49);
+    }
+
+    &-logo {
+        margin-left: 3rem;
+    }
+
+    &-nav a:hover {
+        color: antiquewhite;
+    }
+
+    &-nav a{
+        text-decoration: none;
+        display: inline-block;
+        margin-right: 1rem;
+        padding: 0 1rem;
+    }
+
+    &-active {
+        color: red;
+    }
+}
