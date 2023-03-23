@@ -1,17 +1,24 @@
 <template>
     <h2>Todos</h2>
-    <div class="todo-list">
-        <TodoItem v-for="todo in TODOS_LIST" 
-            :name="todo.name" 
-            :description="todo.description"
-            :is-done="todo.isDone"
-            :created-at="todo.createdAt"
-            :key="todo.id"
-            :id="todo.id"
-            :length="TODOS_LIST.length"
-            @delete="deleteTodoItem"
-        ></TodoItem>
-    </div>
+    <Suspense>
+        <template #default>
+            <div class="todo-list">
+                <TodoItem v-for="todo in TODOS_LIST" 
+                    :name="todo.name" 
+                    :description="todo.description"
+                    :is-done="todo.isDone"
+                    :created-at="todo.createdAt"
+                    :key="todo.id"
+                    :id="todo.id"
+                    :length="TODOS_LIST.length"
+                    @delete="deleteTodoItem"
+                ></TodoItem>
+            </div>
+        </template>
+        <template #fallback>
+            <div class="loading">Loading 1 2 3 ...</div>
+        </template>
+    </Suspense>
 </template>
 
 <script setup>
@@ -29,7 +36,7 @@
         // A component to use while the async component is loading
         loadingComponent: Loading,
         // Delay before showing the loading component. Default: 200ms.
-        delay: 20,
+        delay: 200,
 
         // A component to use if the load fails
         errorComponent: Error,
@@ -51,6 +58,12 @@ h2 {
     margin-bottom: 1rem;
     text-align: center;
     color: rgb(135, 151, 165);
+}
+.loading {
+    height: 5rem;
+    width: 50%;
+    margin: 2rem auto;
+    text-align: center;
 }
 .todo-list {
     max-height: 75vh;
