@@ -29,6 +29,16 @@
     // import TodoItem from '../components/Todo/TodoItem.vue'
 
     const { TODOS_LIST, deleteOneTodo } = store()
+
+    // //Test to delay loading asyncComponet to show default 
+    // const TodoItem = defineAsyncComponent(() => {
+    //     return new Promise((resolve) => {
+    //         setTimeout(() => {
+    //             resolve(import('../components/Todo/TodoItem.vue'))
+    //         }, 2000)
+    //     })
+    // })
+
     const TodoItem = defineAsyncComponent({
         // the loader function
         loader: () => import('../components/Todo/TodoItem.vue'),

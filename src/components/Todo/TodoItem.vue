@@ -43,8 +43,8 @@
     import Button from '../UI/Button.vue'
     // import Dialog from '../UI/Dialog.vue'
 
-    // const Dialog = () => import('../UI/Dialog.vue')
-    const Dialog = defineAsyncComponent (() => import('../UI/Dialog.vue'))
+    // const Dialog = () => import('../UI/Dialog.vue') //>>> Dynamic Import , chỉ dc hỗ trợ bởi Vue Router
+    const Dialog = defineAsyncComponent (() => import('../UI/Dialog.vue')) // AsyncComponent
 
     const props = defineProps(['name', 'description', 'isDone', 'createdAt', 'id', 'length'])
     const emit = defineEmits(['delete'])
