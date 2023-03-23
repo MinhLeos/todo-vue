@@ -37,11 +37,14 @@
 
 <script setup>
     import { useRouter } from 'vue-router'
-    import { ref, computed } from 'vue'
+    import { ref, computed, defineAsyncComponent } from 'vue'
     import { store } from '../../ultis/store.js'
     import Wrapper from '../UI/Wrapper.vue'
     import Button from '../UI/Button.vue'
-    import Dialog from '../UI/Dialog.vue'
+    // import Dialog from '../UI/Dialog.vue'
+
+    // const Dialog = () => import('../UI/Dialog.vue')
+    const Dialog = defineAsyncComponent (() => import('../UI/Dialog.vue'))
 
     const props = defineProps(['name', 'description', 'isDone', 'createdAt', 'id', 'length'])
     const emit = defineEmits(['delete'])
