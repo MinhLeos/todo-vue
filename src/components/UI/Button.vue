@@ -9,5 +9,5 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/button.scss'
+@import '../../scss/button.scss';
 </style>

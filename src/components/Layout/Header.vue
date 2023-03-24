@@ -10,9 +10,9 @@
 </template>
 
 <script setup>
-    import navbarData from '../../ultis/navbar.js'
+    import navbarData from '../../ultis/navbar.js';
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/header.scss'
+@import '../../scss/header.scss';
 </style>

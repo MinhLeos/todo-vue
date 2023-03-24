@@ -36,12 +36,12 @@
 </template>
 
 <script setup>
-    import { useRouter } from 'vue-router'
-    import { ref, computed, defineAsyncComponent } from 'vue'
-    import { store } from '../../ultis/store.js'
-    import Wrapper from '../UI/Wrapper.vue'
-    import Button from '../UI/Button.vue'
-    // import Dialog from '../UI/Dialog.vue'
+    import { useRouter } from 'vue-router';
+    import { ref, computed, defineAsyncComponent } from 'vue';
+    import { store } from '../../composables/store.js';
+    import Wrapper from '../UI/Wrapper.vue';
+    import Button from '../UI/Button.vue';
+    // import Dialog from '../UI/Dialog.vue';
 
     // const Dialog = () => import('../UI/Dialog.vue') //>>> Dynamic Import , chỉ dc hỗ trợ bởi Vue Router
     const Dialog = defineAsyncComponent (() => import('../UI/Dialog.vue')) // AsyncComponent
@@ -99,5 +99,5 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../../scss/todo-item.scss'
+    @import '../../scss/todo-item.scss';
 </style>

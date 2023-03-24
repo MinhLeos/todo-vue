@@ -1,9 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
-// import { defineAsyncComponent } from 'vue'
+import { createRouter, createWebHistory } from 'vue-router';
+// import { defineAsyncComponent } from 'vue';
 
-// import AddTodo from '../pages/AddTodo.vue'
-// import EditTodo from '../pages/EditTodo.vue'
-// import TodosList from '../pages/TodosList.vue'
+// import AddTodo from '../pages/AddTodo.vue';
+// import EditTodo from '../pages/EditTodo.vue';
+// import TodosList from '../pages/TodosList.vue';
 
 const TodosList = () => import('../pages/TodosList.vue')
 const EditTodo = () => import('../pages/EditTodo.vue')

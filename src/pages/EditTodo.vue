@@ -12,10 +12,11 @@
     <Wrapper>
         <form class="edit-todo-form">
 
-            <div class="edit-todo-form-div">
+            <!-- <div class="edit-todo-form-div">
                 <label for="name">Name</label>
                 <input id="name" name="name" :value="name" @input="changeName"/>
-            </div>
+            </div> -->
+            <Input :input-value="name" input-name="edit-todo-name" @change-input="changeName"></Input>
             <div class="edit-todo-form-div">
                 <label for="description">Description</label>
                 <textarea id="description" name="description" @input="changeDescription">{{ description }}</textarea>
@@ -26,12 +27,13 @@
 </template>
 
 <script setup>
-    import { ref, computed, toRefs } from 'vue'
-    import { useRouter } from 'vue-router'
-    import { store } from '../ultis/store';
-    import Wrapper from '../components/UI/Wrapper.vue'
-    import Button from '../components/UI/Button.vue'
-    import Dialog from '../components/UI/Dialog.vue'
+    import { ref, computed, toRefs } from 'vue';
+    import { useRouter } from 'vue-router';
+    import { store } from '../composables/store.js';
+    import Wrapper from '../components/UI/Wrapper.vue';
+    import Button from '../components/UI/Button.vue';
+    import Dialog from '../components/UI/Dialog.vue';
+    import Input from '../components/UI/Input.vue';
 
     const { TODOS_LIST, editTodo } = store()
     const props = defineProps(['id'])
@@ -44,8 +46,9 @@
     })
     const { name, description } = toRefs(todo.value)
     
-    function changeName(event) {
-        name.value = event.target.value
+    function changeName(inputValue) {
+        name.value = inputValue
+        // name.value = event.target.value
     }
     function changeDescription(event) {
         description.value = event.target.value
@@ -64,5 +67,5 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/edit-todo.scss'
+@import '../scss/edit-todo.scss';
 </style>

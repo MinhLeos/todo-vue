@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import { store } from '../../ultis/store';
+    import { store } from '../../composables/store.js';
     export default {
         computed: {
             todos(){
@@ -18,5 +18,5 @@
     }
 </script>
 <style lang="scss" scoped>
-@import '../../scss/footer.scss'
+@import '../../scss/footer.scss';
 </style>

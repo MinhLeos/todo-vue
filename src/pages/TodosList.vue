@@ -22,11 +22,11 @@
 </template>
 
 <script setup>
-    import { defineAsyncComponent } from 'vue'
-    import { store } from '../ultis/store.js'
-    import Loading from '../components/UI/Loading.vue'
-    import Error from '../components/UI/Error.vue'
-    // import TodoItem from '../components/Todo/TodoItem.vue'
+    import { defineAsyncComponent } from 'vue';
+    import { store } from '../composables/store.js';
+    import Loading from '../components/UI/Loading.vue';
+    import Error from '../components/UI/Error.vue';
+    // import TodoItem from '../components/Todo/TodoItem.vue';
 
     const { TODOS_LIST, deleteOneTodo } = store()
 

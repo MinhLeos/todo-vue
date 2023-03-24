@@ -20,7 +20,7 @@
   </template>
 
   <script setup>
-    import Button from './Button.vue'
+    import Button from './Button.vue';
 
     const props = defineProps(['title'])
     const emit = defineEmits(['close'])
@@ -31,5 +31,5 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/dialog.scss'
+@import '../../scss/dialog.scss';
 </style>

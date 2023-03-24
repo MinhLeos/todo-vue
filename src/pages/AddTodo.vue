@@ -12,10 +12,11 @@
     <Wrapper>
         <form class="edit-todo-form">
 
-            <div class="edit-todo-form-div">
+            <!-- <div class="edit-todo-form-div">
                 <label for="name">Name</label>
-                <input id="name" name="name" v-model="todoName"/>
-            </div>
+                <input id="name" name="name" v-model="todoName" v-focus/>
+            </div> -->
+            <Input input-name="add-todo-name" :input-value="todoName" @change-input="handleChangeInput"></Input>
             <div class="edit-todo-form-div">
                 <label for="description">Description</label>
                 <textarea id="description" name="description" v-model="todoDescription"></textarea>
@@ -26,12 +27,18 @@
 </template>
 
 <script setup>
-    import { onUnmounted, onMounted, ref } from 'vue'
-    import { useRouter } from 'vue-router'
-    import { store } from '../ultis/store';
-    import Wrapper from '../components/UI/Wrapper.vue'
-    import Button from '../components/UI/Button.vue'
-    import Dialog from '../components/UI/Dialog.vue'
+    import { onUnmounted, onMounted, ref } from 'vue';
+    import { useRouter } from 'vue-router';
+    import { store } from '../composables/store.js';
+    import Wrapper from '../components/UI/Wrapper.vue';
+    import Button from '../components/UI/Button.vue';
+    import Dialog from '../components/UI/Dialog.vue';
+    import Input from '../components/UI/Input.vue';
+
+    //Simple Custom Directives
+    const vFocus = {
+        mounted: (el) => el.focus()
+    }
 
     const router = useRouter()
     const todoName = ref('')
@@ -50,6 +57,10 @@
     }
     function confirmError() {
         inputIsInvalid.value = false
+    }
+
+    function handleChangeInput(inputValue) {
+        todoName.value = inputValue
     }
 
     // demo use lifecycle hooks : onMounted và onUnmounted
@@ -71,5 +82,5 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/edit-todo.scss'
+@import '../scss/edit-todo.scss';
 </style>

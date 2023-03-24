@@ -1,5 +1,5 @@
-import { reactive } from 'vue'
-import DUMMY_TODO_DATA from './dummy-data.js'
+import { reactive } from 'vue';
+import DUMMY_TODO_DATA from '../ultis/dummy-data.js';
 
 export function store() {
 
