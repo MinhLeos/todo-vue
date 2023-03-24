@@ -30,14 +30,14 @@
         <p><i>Id: {{ props.id }}</i></p>
         <div class="mt-8">
             <Button title="Edit" action="edit" @click="editClick"></Button>
-            <Button title="Delete" action="delete" :disable="props.length === 1" @click="deleteClick"></Button>
+            <Button title="Delete" action="delete" :disable="isDisable.value" @click="deleteClick"></Button>
         </div>
     </Wrapper>
 </template>
 
 <script setup>
     import { useRouter } from 'vue-router';
-    import { ref, computed, defineAsyncComponent } from 'vue';
+    import { ref, computed, defineAsyncComponent, nextTick, watch, toRefs, reactive } from 'vue';
     import { store } from '../../composables/store.js';
     import Wrapper from '../UI/Wrapper.vue';
     import Button from '../UI/Button.vue';
@@ -48,13 +48,25 @@
 
     const props = defineProps(['name', 'description', 'isDone', 'createdAt', 'id', 'length'])
     const emit = defineEmits(['delete'])
+
     const todoIsDone = ref(false)
     const isDelete = ref(false)
+    const isDisable = reactive({value: false})
+
     const { changeStatus } = store()
+
     const listDes = computed(() => {
         const list = props.description.split('\n')
         return list
     })
+
+    const { length } = toRefs(props)
+    // use watch to listen change of length to disable button delete
+    watch(length, (newValue) => {
+        if (newValue === 1) {
+            isDisable.value = true
+        }
+    }, {immediate: true})
 
     const status = computed(() => {
         if (props.isDone) {
@@ -90,11 +102,21 @@
         todoIsDone.value = false
     }
     function confirmDelete(confirm) {
+        isDelete.value = false
         if (confirm) {
             emit('delete', props.id)
-        } else {
-            isDelete.value = false
-        }
+        } 
+        // if (confirm) {
+        //     //Demo test nextTick
+        //     nextTick(() => {
+        //         console.log('test nexttick')
+        //         emit('delete', props.id)
+        //     })
+        //     setTimeout(() => {
+        //         console.log('emit delete')
+        //         emit('delete', props.id)
+        //     }, 3000)
+        // }
     }
 </script>
 

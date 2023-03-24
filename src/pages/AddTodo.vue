@@ -35,10 +35,10 @@
     import Dialog from '../components/UI/Dialog.vue';
     import Input from '../components/UI/Input.vue';
 
-    //Simple Custom Directives
-    const vFocus = {
-        mounted: (el) => el.focus()
-    }
+    // //Simple Custom Directives
+    // const vFocus = {
+    //     mounted: (el) => el.focus()
+    // }
 
     const router = useRouter()
     const todoName = ref('')
