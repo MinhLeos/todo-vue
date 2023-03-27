@@ -10,7 +10,7 @@
     </Dialog>
     <Dialog v-if="isShowDialog.isDelete" @close="confirmDelete(false)" title="Delete">
         <template #default>
-            <p ref="element">You definitely want to delete this task?</p>
+            <p id="next-tick">You definitely want to delete this task?</p>
             <p>This will delete the data from memory and cannot be recovered. Are you sure you still want to continue?</p>
         </template>
         <template #actions>
@@ -49,7 +49,7 @@
     const props = defineProps(['name', 'description', 'isDone', 'createdAt', 'id', 'length'])
     const emit = defineEmits(['delete'])
 
-    const element = ref(null)
+    // const element = ref(null)
 
     //use reactive 
     const isShowDialog = reactive({
@@ -96,18 +96,27 @@
         }
         router.push('/edit-todo/' + props.id)
     }
+
     function deleteClick() {
         if (props.length === 1) {
             return
         }
-        isShowDialog.isDelete = true
+        
+        console.log('isShowDialog.isDelete before 1', isShowDialog.isDelete)
         nextTick(() => {
-            console.log('nextTick')
-            if (element.value) {
-                element.value.style.color = 'red'
+            console.log('isShowDialog.isDelete after', isShowDialog.isDelete)
+            const element = document.getElementById('next-tick')
+            const body = document.querySelector('body')
+            console.log('element', element)
+            console.log('body', body)
+            if (isShowDialog.isDelete === true) {
+                //element.style.color = 'red'
             }
         })
+        console.log('isShowDialog.isDelete before 2', isShowDialog.isDelete)
+        isShowDialog.isDelete = true
     }
+
     function handleChangeStatus() {
         changeStatus(props.id)
     }
