@@ -111,15 +111,34 @@
             // if (isShowDialog.isDelete === true) {
             //     element.style.color = 'red'
             // }
-            setTimeout(() => {
-                const body = document.querySelector('body')
-                console.log('body', body)
-                const element = document.querySelector('#next-tick')
-                console.log('element', element)
-                if (isShowDialog.isDelete === true) {
-                    element.style.color = 'red'
+            // console.log('nextTickDOM.value', nextTickDOM.value)
+
+            watch(() => nextTickDOM.value,(val) => {
+                console.log('val 1', val)
+                if (val) {
+                    console.log('val', val)
+                    val.style.color = 'blue'
                 }
-            }, 10)
+            })
+            const body = document.querySelector('body')
+            console.log('body', body)
+            const element = document.querySelector('#next-tick')
+            console.log('element', element)
+            
+            if (element && isShowDialog.isDelete === true) {
+                element.style.color = 'red'
+            }
+
+            // setTimeout(() => {               
+            //     const body = document.querySelector('body')
+            //     console.log('body', body)
+            //     const element = document.querySelector('#next-tick')
+            //     console.log('element', element)
+                
+            //     if (element && isShowDialog.isDelete === true) {
+            //         element.style.color = 'red'
+            //     }
+            // }, 0)
         })
     }
 
@@ -136,7 +155,7 @@
         }
     }
     watch(() => nextTickDOM.value,(val) => {
-        console.log('nextTickDOM', val)
+        console.log('nextTickDOM 123', val)
     })
 </script>
 
