@@ -104,15 +104,22 @@
         isShowDialog.isDelete = true
 
         nextTick(() => {
+            // const body = document.querySelector('body')
+            // const element = document.querySelector('#next-tick')
+            // console.log('body', body)
+            // console.log('element', element)
+            // if (isShowDialog.isDelete === true) {
+            //     element.style.color = 'red'
+            // }
             setTimeout(() => {
-                const element = document.querySelector('#next-tick')
                 const body = document.querySelector('body')
-                console.log('element', element)
                 console.log('body', body)
+                const element = document.querySelector('#next-tick')
+                console.log('element', element)
                 if (isShowDialog.isDelete === true) {
                     element.style.color = 'red'
                 }
-            }, 1000)
+            }, 10)
         })
     }
 
