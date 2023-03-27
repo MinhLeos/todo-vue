@@ -33,6 +33,7 @@
             <Button title="Delete" action="delete" :disable="isDisable" @click="deleteClick"></Button>
         </div>
     </Wrapper>
+    <div v-if="isShowDialog.isDelete" id="demo">123</div>
 </template>
 
 <script setup>
@@ -104,41 +105,17 @@
         isShowDialog.isDelete = true
 
         nextTick(() => {
-            // const body = document.querySelector('body')
-            // const element = document.querySelector('#next-tick')
-            // console.log('body', body)
-            // console.log('element', element)
-            // if (isShowDialog.isDelete === true) {
-            //     element.style.color = 'red'
-            // }
-            // console.log('nextTickDOM.value', nextTickDOM.value)
-
-            watch(() => nextTickDOM.value,(val) => {
-                console.log('val 1', val)
-                if (val) {
-                    console.log('val', val)
-                    val.style.color = 'blue'
-                }
-            })
-            const body = document.querySelector('body')
-            console.log('body', body)
-            const element = document.querySelector('#next-tick')
-            console.log('element', element)
-            
-            if (element && isShowDialog.isDelete === true) {
-                element.style.color = 'red'
-            }
-
-            // setTimeout(() => {               
-            //     const body = document.querySelector('body')
-            //     console.log('body', body)
-            //     const element = document.querySelector('#next-tick')
-            //     console.log('element', element)
+            //Do Dialog đang là AsyncComponent nên phải đưa vào setTimeout để đợi tải xong component này
+            //thì mới lấy được element 
+            // hoặc có thể chuyển về import Dialog như bình thường (ko phải asyncComponent)
+            // thì ko cần setTimeout cũng lấy được element
+            setTimeout(() => {  
+                const element = document.querySelector('#next-tick')
                 
-            //     if (element && isShowDialog.isDelete === true) {
-            //         element.style.color = 'red'
-            //     }
-            // }, 0)
+                if (element && isShowDialog.isDelete === true) {
+                    element.style.color = 'red'
+                }
+            }, 100)
         })
     }
 
