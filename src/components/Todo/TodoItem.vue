@@ -10,7 +10,7 @@
     </Dialog>
     <Dialog v-if="isShowDialog.isDelete" @close="confirmDelete(false)" title="Delete">
         <template #default>
-            <p id="next-tick">You definitely want to delete this task?</p>
+            <p id="next-tick" ref="nextTickDOM">You definitely want to delete this task?</p>
             <p>This will delete the data from memory and cannot be recovered. Are you sure you still want to continue?</p>
         </template>
         <template #actions>
@@ -45,7 +45,7 @@
 
     // const Dialog = () => import('../UI/Dialog.vue') //>>> Dynamic Import , chỉ dc hỗ trợ bởi Vue Router
     const Dialog = defineAsyncComponent (() => import('../UI/Dialog.vue')) // AsyncComponent
-
+    const nextTickDOM = ref();
     const props = defineProps(['name', 'description', 'isDone', 'createdAt', 'id', 'length'])
     const emit = defineEmits(['delete'])
 
@@ -101,20 +101,19 @@
         if (props.length === 1) {
             return
         }
-        
-        console.log('isShowDialog.isDelete before 1', isShowDialog.isDelete)
-        nextTick(() => {
-            console.log('isShowDialog.isDelete after', isShowDialog.isDelete)
-            const element = document.getElementById('next-tick')
-            const body = document.querySelector('body')
-            console.log('element', element)
-            console.log('body', body)
-            if (isShowDialog.isDelete === true) {
-                //element.style.color = 'red'
-            }
-        })
-        console.log('isShowDialog.isDelete before 2', isShowDialog.isDelete)
         isShowDialog.isDelete = true
+
+        nextTick(() => {
+            setTimeout(() => {
+                const element = document.querySelector('#next-tick')
+                const body = document.querySelector('body')
+                console.log('element', element)
+                console.log('body', body)
+                if (isShowDialog.isDelete === true) {
+                    element.style.color = 'red'
+                }
+            }, 1000)
+        })
     }
 
     function handleChangeStatus() {
@@ -129,6 +128,9 @@
             emit('delete', props.id)
         }
     }
+    watch(() => nextTickDOM.value,(val) => {
+        console.log('nextTickDOM', val)
+    })
 </script>
 
 <style lang="scss" scoped>
