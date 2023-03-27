@@ -1,5 +1,5 @@
 <template>
-    <Dialog v-if="todoIsDone" @close="confirmError" title="Edit">
+    <Dialog v-if="isShowDialog.todoIsDone" @close="confirmError" title="Edit">
         <template #default>
             <p>Unable to edit task done</p>
             <p>You cannot edit a task that has been completed before reopening the task.</p>
@@ -8,7 +8,7 @@
             <Button @click="confirmError">Okay</Button>
         </template>
     </Dialog>
-    <Dialog v-if="isDelete" @close="confirmDelete(false)" title="Delete">
+    <Dialog v-if="isShowDialog.isDelete" @close="confirmDelete(false)" title="Delete">
         <template #default>
             <p>You definitely want to delete this task?</p>
             <p>This will delete the data from memory and cannot be recovered. Are you sure you still want to continue?</p>
@@ -30,7 +30,7 @@
         <p><i>Id: {{ props.id }}</i></p>
         <div class="mt-8">
             <Button title="Edit" action="edit" @click="editClick"></Button>
-            <Button title="Delete" action="delete" :disable="isDisable.value" @click="deleteClick"></Button>
+            <Button title="Delete" action="delete" :disable="isDisable" @click="deleteClick"></Button>
         </div>
     </Wrapper>
 </template>
@@ -49,9 +49,14 @@
     const props = defineProps(['name', 'description', 'isDone', 'createdAt', 'id', 'length'])
     const emit = defineEmits(['delete'])
 
-    const todoIsDone = ref(false)
-    const isDelete = ref(false)
-    const isDisable = reactive({value: false})
+    //use reactive 
+    const isShowDialog = reactive({
+        todoIsDone: false,
+        isDelete: false
+    })
+    // const todoIsDone = ref(false)
+    // const isDelete = ref(false)
+    const isDisable = ref(false)
 
     const { changeStatus } = store()
 
@@ -84,7 +89,7 @@
     const router = useRouter()
     function editClick() {
         if (props.isDone) {
-            todoIsDone.value = true
+            isShowDialog.todoIsDone = true
             return
         }
         router.push('/edit-todo/' + props.id)
@@ -93,16 +98,16 @@
         if (props.length === 1) {
             return
         }
-        isDelete.value = true
+        isShowDialog.isDelete = true
     }
     function handleChangeStatus() {
         changeStatus(props.id)
     }
     function confirmError() {
-        todoIsDone.value = false
+        isShowDialog.todoIsDone = false
     }
     function confirmDelete(confirm) {
-        isDelete.value = false
+        isShowDialog.isDelete = false
         if (confirm) {
             emit('delete', props.id)
         } 
