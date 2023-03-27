@@ -10,7 +10,7 @@
     </Dialog>
     <Dialog v-if="isShowDialog.isDelete" @close="confirmDelete(false)" title="Delete">
         <template #default>
-            <p>You definitely want to delete this task?</p>
+            <p ref="element">You definitely want to delete this task?</p>
             <p>This will delete the data from memory and cannot be recovered. Are you sure you still want to continue?</p>
         </template>
         <template #actions>
@@ -20,7 +20,7 @@
     </Dialog>
     <Wrapper>
         <div class="todo-item-title flex items-center justify-center mb-4">
-            <h3 class="text-[#50d71e]">{{ props.name }}</h3>
+            <h3 :id="props.name" class="text-[#50d71e]">{{ props.name }}</h3>
             <p :class="status.class" @click="handleChangeStatus">{{ status.title }}</p>
         </div>
         <div class="w-[70%] my-0 mx-auto text-start">
@@ -37,7 +37,7 @@
 
 <script setup>
     import { useRouter } from 'vue-router';
-    import { ref, computed, defineAsyncComponent, nextTick, watch, toRefs, reactive } from 'vue';
+    import { ref, computed, defineAsyncComponent, nextTick, watch, toRefs, reactive, onMounted } from 'vue';
     import { store } from '../../composables/store.js';
     import Wrapper from '../UI/Wrapper.vue';
     import Button from '../UI/Button.vue';
@@ -48,6 +48,8 @@
 
     const props = defineProps(['name', 'description', 'isDone', 'createdAt', 'id', 'length'])
     const emit = defineEmits(['delete'])
+
+    const element = ref(null)
 
     //use reactive 
     const isShowDialog = reactive({
@@ -99,6 +101,12 @@
             return
         }
         isShowDialog.isDelete = true
+        nextTick(() => {
+            console.log('nextTick')
+            if (element.value) {
+                element.value.style.color = 'red'
+            }
+        })
     }
     function handleChangeStatus() {
         changeStatus(props.id)
@@ -110,18 +118,7 @@
         isShowDialog.isDelete = false
         if (confirm) {
             emit('delete', props.id)
-        } 
-        // if (confirm) {
-        //     //Demo test nextTick
-        //     nextTick(() => {
-        //         console.log('test nexttick')
-        //         emit('delete', props.id)
-        //     })
-        //     setTimeout(() => {
-        //         console.log('emit delete')
-        //         emit('delete', props.id)
-        //     }, 3000)
-        // }
+        }
     }
 </script>
 

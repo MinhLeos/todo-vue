@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-    import { onUnmounted, onMounted, ref } from 'vue';
+    import { onUnmounted, onMounted, ref, nextTick } from 'vue';
     import { useRouter } from 'vue-router';
     import { store } from '../composables/store.js';
     import Wrapper from '../components/UI/Wrapper.vue';
@@ -47,7 +47,7 @@
     const classAdd = ref('')
     const { addTodo } = store()
     
-    function handleSubmitEdit() {
+    async function handleSubmitEdit() {
         if (todoName.value.trim() === '' || todoDescription.value.trim() === '') {
             inputIsInvalid.value = true
             return

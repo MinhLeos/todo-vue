@@ -1,4 +1,4 @@
-import { reactive } from 'vue';
+import { reactive, shallowReadonly } from 'vue';
 import DUMMY_TODO_DATA from '../ultis/dummy-data.js';
 
 export function store() {
@@ -37,6 +37,6 @@ export function store() {
         }
     }
 
-    return { TODOS_LIST, addTodo, deleteOneTodo, editTodo, changeStatus }
+    return { TODOS_LIST: shallowReadonly(TODOS_LIST), addTodo, deleteOneTodo, editTodo, changeStatus }
 }
 

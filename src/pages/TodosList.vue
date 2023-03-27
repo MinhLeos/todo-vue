@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-    import { defineAsyncComponent } from 'vue';
+    import { defineAsyncComponent, nextTick } from 'vue';
     import { store } from '../composables/store.js';
     import Loading from '../components/UI/Loading.vue';
     import Error from '../components/UI/Error.vue';
