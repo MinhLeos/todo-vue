@@ -2,7 +2,7 @@
     <h2 class="todo-list-header">Todos</h2>
     <Suspense>
         <template #default>
-            <div class="todo-list-item">
+            <div class="todo-list-item" id="todo-list-item">
                 <TodoItem v-for="todo in TODOS_LIST" 
                     :name="todo.name" 
                     :description="todo.description"
@@ -22,12 +22,31 @@
 </template>
 
 <script setup>
-    import { defineAsyncComponent, nextTick } from 'vue';
+    import { defineAsyncComponent, nextTick, onMounted, onUnmounted } from 'vue';
     import { store } from '../composables/store.js';
     import Loading from '../components/UI/Loading.vue';
     import Error from '../components/UI/Error.vue';
     // import TodoItem from '../components/Todo/TodoItem.vue';
 
+    let timer 
+    onMounted(() => {
+        timer = setTimeout(() => {
+            console.log('mount')
+            const todoListEle = document.getElementById('todo-list-item')
+            todoListEle.addEventListener('scroll', () => {
+                headerEle.style.backgroundColor = 'transparent'
+            })
+            const headerEle = document.getElementById('header')
+            headerEle.addEventListener('mousemove', (e) => {
+                headerEle.style.backgroundColor = '#519ec2'
+            })
+        }, 1000)
+    })
+    onUnmounted(() => {
+        if(timer) {
+            clearTimeout(timer)
+        }
+    })
     const { TODOS_LIST, deleteOneTodo } = store()
 
     // //Test to delay loading asyncComponet to show default 
