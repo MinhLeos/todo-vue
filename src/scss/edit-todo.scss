@@ -1,7 +1,7 @@
 .edit-todo {
 
     &-header {
-        @apply text-4xl text-center mb-12 text-[#8797a5];
+        @apply mb-12;
     }
 
     &-header.change-color {
@@ -16,7 +16,7 @@
 
             input,
             textarea {
-                @apply block w-full border border-solid border-slate-500 py-0.5 px-2;
+                @apply block w-full custom-border border-slate-500 py-0.5 px-2;
             }
 
             textarea {

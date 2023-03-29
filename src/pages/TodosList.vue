@@ -1,5 +1,5 @@
 <template>
-    <h2 class="todo-list-header">Todos</h2>
+    <h2 class="todo-list-header custom-h2">Todos</h2>
     <Suspense>
         <template #default>
             <div class="todo-list-item">

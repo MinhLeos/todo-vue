@@ -8,7 +8,7 @@
             <Button @click="confirmError">Okay</Button>
         </template>
     </Dialog>
-    <h2 class="edit-todo-header" :class="classAdd">Add Todo</h2>
+    <h2 class="edit-todo-header custom-h2" :class="classAdd">Add Todo</h2>
     <Wrapper>
         <form class="edit-todo-form">
 

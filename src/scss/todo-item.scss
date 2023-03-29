@@ -3,7 +3,7 @@
         @apply flex items-center justify-center mb-4;
 
         p {
-            @apply w-20 ml-4 border border-solid border-transparent bg-[aqua] rounded-full text-center cursor-pointer break-words;
+            @apply w-20 ml-4 custom-border border-transparent bg-[aqua] rounded-full text-center cursor-pointer break-words;
    
             &.done {
                 @apply bg-[#189c4b];
