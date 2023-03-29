@@ -19,11 +19,11 @@
         </template>
     </Dialog>
     <Wrapper>
-        <div class="todo-item-title flex items-center justify-center mb-4">
+        <div class="todo-item-title">
             <h3 :id="props.name" class="text-[#50d71e]">{{ props.name }}</h3>
             <p :class="status.class" @click="handleChangeStatus">{{ status.title }}</p>
         </div>
-        <div class="w-[70%] my-0 mx-auto text-start">
+        <div class="todo-item-description">
             <p v-for="des in listDes" :key="des">{{ des }}</p>
         </div>
         <p class="mt-4"><i>{{ new Date(props.createdAt).toISOString() }}</i></p>

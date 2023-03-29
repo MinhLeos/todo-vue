@@ -1,11 +1,3 @@
 <template>
-    <p>Some thing when wrong!!!</p>
+    <p class="w-[50%] h-20 my-8 mx-auto">Some thing when wrong!!!</p>
 </template>
-<style scoped>
-    p {
-        height: 5rem;
-        width: 50%;
-        margin: 2rem auto;
-        text-align: center;
-    }
-</style>

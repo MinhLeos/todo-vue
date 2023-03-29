@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <label :for="inputName">Name</label>
+    <div class="container">
+        <label class="label" :for="inputName">Name</label>
         <!-- <input :id="inputName" :name="inputName" ref="input" :value="inputValue" @input="handleChangeInput" v-focus/> -->
-        <input :id="inputName" :name="inputName" ref="inputRef" :value="inputValue" @input="handleChangeInput" v-focus/>
+        <input class="input" :id="inputName" :name="inputName" ref="inputRef" :value="inputValue" @input="handleChangeInput" v-focus/>
     </div>
 </template>
 
@@ -27,27 +27,5 @@ import { toRefs, ref, reactive } from 'vue';
 </script>
 
 <style scoped>
-    div {
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 2rem;
-    }
-    div input {
-        display: block;
-        width: 100%;
-        font: inherit;
-        padding: 0.15rem 0.5rem;
-        border: 1px solid #ccc;
-    }
-    div input:focus {
-        outline: none;
-        border-color: #3a0061;
-        background-color: #f7ebff;
-    }
-    div label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 0.5rem;
-        text-align: start;
-    }
+@import '../../scss/input.scss';
 </style>

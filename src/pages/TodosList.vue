@@ -1,8 +1,8 @@
 <template>
-    <h2>Todos</h2>
+    <h2 class="todo-list-header">Todos</h2>
     <Suspense>
         <template #default>
-            <div class="todo-list">
+            <div class="todo-list-item">
                 <TodoItem v-for="todo in TODOS_LIST" 
                     :name="todo.name" 
                     :description="todo.description"
@@ -63,24 +63,6 @@
     }
 </script>
 
-<style scoped>
-h2 {
-    margin-bottom: 1rem;
-    text-align: center;
-    color: rgb(135, 151, 165);
-}
-.loading {
-    height: 5rem;
-    width: 50%;
-    margin: 2rem auto;
-    text-align: center;
-}
-.todo-list {
-    max-height: 75vh;
-    overflow: auto;
-}
-.todo-list::-webkit-scrollbar { 
-  width: 0 !important;
-  display: none; 
-}
+<style lang="scss" scoped>
+@import '../scss/todo-list.scss';
 </style>

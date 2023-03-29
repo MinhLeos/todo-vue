@@ -5,14 +5,8 @@ import Footer from './components/Layout/Footer.vue';
 
 <template>
   <Header></Header>
-  <main>
+  <main class="mt-20 max-w-[1400px] mx-auto">
     <RouterView></RouterView>
   </main>
   <Footer></Footer>
 </template>
-
-<style scoped>
-main {
-  margin-top: 5rem;
-}
-</style>

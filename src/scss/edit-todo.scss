@@ -1,49 +1,35 @@
 .edit-todo {
 
     &-header {
-        text-align: center;
-        color: rgb(135, 151, 165);
-        margin-bottom: 3rem;
+        @apply text-4xl text-center mb-12 text-[#8797a5];
     }
 
     &-header.change-color {
-        color: aqua;
+        @apply text-[aqua];
     }
 
     &-form {
-        height: 30vh;
-        margin-bottom: 2rem;
+        @apply h-2/6 mb-8;
         
         &-div {
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 2rem;
+            @apply items-center mb-8 flex-col;
 
             input,
             textarea {
-                display: block;
-                width: 100%;
-                font: inherit;
-                padding: 0.15rem 0.5rem;
-                border: 1px solid #ccc;
+                @apply block w-full border border-solid border-slate-500 py-0.5 px-2;
             }
 
             textarea {
-                height: 10rem;
+                @apply h-40;
             }
 
             input:focus,
             textarea:focus {
-              outline: none;
-              border-color: #3a0061;
-              background-color: #f7ebff;
+                @apply outline-none bg-[#f7ebff] border-[#3a0061];
             }
 
             label {
-                font-weight: bold;
-                display: block;
-                margin-bottom: 0.5rem;
-                text-align: start;
+                @apply font-bold block mb-2 text-start;
             }
         }
     }

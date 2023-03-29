@@ -1,44 +1,28 @@
 .btn {
-    width: 7rem;
-    padding: 5px 0;
-    outline: none;
-    opacity: 0.8;
-    background-color: rgb(16, 163, 231);
-    color: white;
-    margin-right: 1rem;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    transition: border-color 0.25s;
+    @apply w-28 py-1.5 px-0 outline-none opacity-80 bg-[#10a3e7] text-white mr-4 border border-solid border-transparent; 
+    @apply rounded-lg font-medium text-base cursor-pointer transition-[border-color] duration-300;
 
     &:disabled {
-        pointer-events: none;
-        opacity: 0.2;
+        @apply pointer-events-none opacity-20;
     }
 
     &:hover {
-        opacity: 1;
+        @apply opacity-100;
     }
 
     &:active {
-        opacity: 0.5;
+        @apply opacity-60;
     }
 
     a {
-        display: inline-block;
-        padding: 0.6em 1.2em;
-        width: 100%;
-        text-decoration: none;
+        @apply inline-block w-full no-underline py-[0.6em] px-[1.2em];
     }
 
     &.edit {
-        background-color: rgb(18, 141, 197);
+        @apply bg-[#128dc5];
     }
 
     &.delete {
-        background-color: rgb(165, 9, 9);
+        @apply bg-[#a50909];
     }
 }

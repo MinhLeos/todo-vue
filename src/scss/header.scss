@@ -1,36 +1,27 @@
 .header {
-    margin: 0;
-    padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(81, 158, 194);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
+    @apply w-full xl:w-11/12 xxl:w-10/12 my-0 mx-auto py-4 px-0 flex justify-between items-center bg-[#519ec2] fixed inset-x-0 top-0 z-20;
 
     &.scroll {
-        background-color: rgb(75, 63, 49);
+        @apply bg-[#93afbd];
     }
 
     &-logo {
-        margin-left: 3rem;
+        @apply ml-20;
     }
 
-    &-nav a:hover {
-        color: antiquewhite;
-    }
+    &-nav a {
+        @apply mr-4 py-0 px-4 inline-block no-underline;
 
-    &-nav a{
-        text-decoration: none;
-        display: inline-block;
-        margin-right: 1rem;
-        padding: 0 1rem;
+        &:hover {
+            @apply text-[antiquewhite];
+        }
+
+        &:nth-last-child(1) {
+            @apply mr-20;
+        }
     }
 
     &-active {
-        color: red;
+        @apply text-[red];
     }
 }

@@ -1,26 +1,25 @@
 .todo-item {
     &-title {
-        p {
-            width: 5rem;
-            margin-left: 1rem;
-            border: 1px solid transparent;
-            background-color: aqua;
-            border-radius: 1111px;
-            text-align: center;
-            cursor: pointer;
-            word-wrap: break-word;
+        @apply flex items-center justify-center mb-4;
 
+        p {
+            @apply w-20 ml-4 border border-solid border-transparent bg-[aqua] rounded-full text-center cursor-pointer break-words;
+   
             &.done {
-                background-color: rgb(24, 156, 75);
+                @apply bg-[#189c4b];
             }
 
             &.active {
-                background-color: rgb(196, 199, 16);
+                @apply bg-[#c4c710];
             }
 
             &:active {
-                opacity: 0.5;
+                @apply opacity-50;
             }
         }
+    }
+
+    &-description {
+        @apply w-[70%] my-0 mx-auto text-start;
     }
 }
