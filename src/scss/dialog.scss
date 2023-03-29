@@ -1,11 +1,12 @@
 .dialog {
 
     &-div {
-        @apply fixed top-0 left-0 h-screen w-full bg-[#000000bf] z-10;
+        @apply fixed top-0 left-0 h-screen w-full bg-[#000000bf] z-30;
     }
 
     &-dialog {
-        @apply fixed top-[20vh] left-[20%] w-[60%] z-[100] rounded-xl border-none p-0 m-0 overflow-hidden shadow-lg;
+        @apply min-h-[20%] xl:w-[50%] xl:left-[25%] xxl:left-[30%] xxl:w-[40%] fixed top-[20vh] left-[20%] w-[60%] z-[100];
+        @apply rounded-xl border-none p-0 m-0 overflow-hidden shadow-lg;
       }
 
       &-header {
@@ -25,12 +26,3 @@
       }
 }
 
-  @media (min-width: 768px) {
-    .dialog {
-
-        &-dialog {
-            left: calc(50% - 20rem);
-            width: 40rem;
-          }
-    }
-  }
