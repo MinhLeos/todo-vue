@@ -1,5 +1,5 @@
 <template>
-    <Dialog v-if="isShowDialog.todoIsDone" @close="confirmError" title="Edit">
+    <Dialog :open="isShowDialog.todoIsDone" @close="confirmError" title="Edit">
         <template #default>
             <p>Unable to edit task done</p>
             <p>You cannot edit a task that has been completed before reopening the task.</p>
@@ -8,7 +8,7 @@
             <Button @click="confirmError">Okay</Button>
         </template>
     </Dialog>
-    <Dialog v-if="isShowDialog.isDelete" @close="confirmDelete(false)" title="Delete">
+    <Dialog :open="isShowDialog.isDelete" @close="confirmDelete(false)" title="Delete">
         <template #default>
             <p id="next-tick" ref="nextTickDOM">You definitely want to delete this task?</p>
             <p>This will delete the data from memory and cannot be recovered. Are you sure you still want to continue?</p>
